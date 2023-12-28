@@ -32,7 +32,7 @@ class ConfirmAccountCodeRespository
 
     public function confirmAccount(string $email): bool
     {
-        $statement = $this->connection->getConnection()->prepare("UPDATE user_accounts SET confirmation_code = confirmed, is_confirmed = 1 WHERE email = ?");
+        $statement = $this->connection->getConnection()->prepare("UPDATE user_accounts SET confirmation_code = 'confirmed', is_confirmed = 1 WHERE email = ?");
         return $statement->execute([$email]);
     }
 }
