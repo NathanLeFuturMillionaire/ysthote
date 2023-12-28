@@ -23,6 +23,17 @@
             case 'authentication':
                 echo '<link rel="stylesheet" href="templates/css/auth/enroll.css">';
             break;
+
+            case 'enterConfirmationCode':
+                echo '<link rel="stylesheet" href="templates/css/auth/enterConfirmationCode.css">';
+            break;
+
+            case 'confirmed':
+                echo '<link rel="stylesheet" href="templates/css/auth/accountConfirmed.css">';
+            break;
+            case 'enterConfirmationCode':
+                echo '<link rel="stylesheet" href="templates/css/auth/enterConfirmationCode.css">';
+            break;
         }
     } else {
         echo '<link rel="stylesheet" href="templates/css/home/home.css">';

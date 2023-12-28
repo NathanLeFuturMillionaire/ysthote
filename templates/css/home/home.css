@@ -73,8 +73,9 @@ main.container header {
     text-align: center;
 }
 
-main.container header h1 {
+main.container header h2 {
     animation: 1s comesFromAbove forwards;
+    user-select: none;
 }
 
 main.container header p {
