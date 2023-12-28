@@ -6,6 +6,8 @@ use Ysthote\Controllers\Viewing\Views;
 
 require_once('src/controllers/Views.php');
 
+require('vendor/autoload.php');
+
 // This is the rooter, that will call the right controller
 if(isset($_GET['page']) && $_GET['page'] !== '') {
     if($_GET['page'] === 'home') {
