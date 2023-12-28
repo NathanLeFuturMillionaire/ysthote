@@ -20,4 +20,14 @@ class Views
     {
         require('templates/auth/enroll.php');
     }
+
+    public function displaysTheConfirmationCodePage()
+    {
+        require('templates/auth/confirmationCode.php');
+    }
+
+    public function displaySuccessAccountConfirmedPage()
+    {
+        require('templates/auth/accountConfirmed.php');
+    }
 }

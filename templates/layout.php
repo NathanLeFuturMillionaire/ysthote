@@ -7,7 +7,7 @@
     <title><?= $title; ?></title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope&family=Nunito+Sans:opsz@6..12&family=Poppins&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    <link href="https://fonts.googleapis.com/css2?family=Manrope&family=Nunito+Sans:opsz@6..12&family=Poppins&family=Roboto&display=swap" rel="stylesheet">
     <?php
     /**
      * Make a switch condition, it will call the right css file
@@ -22,6 +22,17 @@
     
             case 'authentication':
                 echo '<link rel="stylesheet" href="templates/css/auth/enroll.css">';
+            break;
+
+            case 'enterConfirmationCode':
+                echo '<link rel="stylesheet" href="templates/css/auth/enterConfirmationCode.css">';
+            break;
+
+            case 'confirmed':
+                echo '<link rel="stylesheet" href="templates/css/auth/accountConfirmed.css">';
+            break;
+            case 'enterConfirmationCode':
+                echo '<link rel="stylesheet" href="templates/css/auth/enterConfirmationCode.css">';
             break;
         }
     } else {
