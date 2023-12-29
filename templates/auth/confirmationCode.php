@@ -27,7 +27,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 ?>
     <main class="container">
         <header>
-            <i class="fa fa-hourglass-half"></i>
+            <img src="pictures/icons/user-faces/user-3-line.svg" alt="Icone de l'utilisateur" width="50">
             <h2>Confirmez votre compte</h2>
             <?php if (isset($_COOKIE['EMAIL'])) : ?>
                 <p>

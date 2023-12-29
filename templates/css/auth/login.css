@@ -1,0 +1,257 @@
+body {
+    /* font-family: 'Manrope', sans-serif; */
+    /* font-family: 'Nunito Sans', sans-serif; */
+    font-family: 'Poppins', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+
+    transition: .4s;
+}
+
+* {
+    margin: 0;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+
+header.included-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 5px;
+    width: 50%;
+    background: #f7f7f7;
+    transition: .3s;
+    margin: auto;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+
+header.included-header h1 a {
+    color: #000;
+    text-decoration: none;
+    font-size: 0.8em;
+    margin-left: 10px;
+}
+
+header.included-header a:hover {
+    opacity: 0.7;
+}
+
+header .included-navbar ul {
+    list-style-type: none;
+    overflow: hidden;
+}
+
+header .included-navbar li {
+    float: left;
+}
+
+header .included-navbar li a {
+    display: block;
+    padding: 5px;
+    color: #000;
+    text-decoration: none;
+    transition: .3s;
+}
+
+header.included-header .logo {
+    flex: 1;
+}
+
+main.container {
+    width: 40%;
+    height: auto;
+    margin: 2% auto;
+    padding: 10px;
+    border-radius: 10px;
+    background: #fff;
+    position: relative;
+    animation: .6s boxShadowAnimation forwards
+}
+
+main.container header {
+    text-align: center;
+}
+
+main.container .fa {
+    font-size: 3.7em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+main.container header h2 {
+    animation: 1s comesFromAbove forwards;
+    user-select: none;
+}
+
+main.container header p {
+    animation: 1s comesFromBottom forwards;
+}
+
+main.container section a {
+    animation: 1s btnPulledForward forwards;
+}
+
+main.container section {
+    margin-top: 20px;
+}
+
+main.container form {
+    display: flex;
+    flex-direction: column;
+}
+
+main.container form .error-handler {
+    color: #c91010;
+}
+
+main.container form [type="text"] {
+    padding: 10px;
+    border: 1px solid #3b3b3b;
+    border-radius: 3px;
+    outline: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    transition: .3s;
+}
+
+main.container form [type="text"]:focus {
+    outline: 1px solid #3b3b3b;
+}
+
+main.container form button {
+    width: 170px;
+    font-size: 1em;
+    cursor: pointer;
+    margin: 3% auto;
+}
+
+main.container form .have-an-account {
+    text-decoration: none;
+    text-align: center;
+    color: #3b3b3b;
+    transition: .3s;
+}
+
+main.container form .have-an-account:hover {
+    color: #000;
+}
+main.container .btn.btn-darken {
+    padding: 10px;
+    background-color: #3b3b3b;
+    border-radius: 3px;
+    color: #fff;
+    text-align: center;
+    transition: .3s;
+}
+
+
+main.container .btn.btn-darken:hover {
+    background: black;
+    transition: .3s;
+}
+
+footer.footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 10px;
+    text-align: center;
+}
+
+/* On small smartphone screen */
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    header.included-header {
+        width: 100%;
+    }
+    
+    main.container {
+        width: 90%;
+    }
+}
+
+/* On medium smartphone screen */
+@media screen and (min-width: 360px) and (max-width: 414px) {
+    header.included-header {
+        width: 100%;
+    }
+    
+    main.container {
+        width: 90%;
+    }
+}
+
+/* On big smartphone screen */
+@media screen and (min-width: 480px) and (max-width: 768px) {
+    header.included-header {
+        width: 100%;
+    }
+    
+    main.container {
+        width: 90%;
+    }
+}
+
+/* On normal tablet screen */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    header.included-header {
+        width: 50%;
+    }
+    
+    main.container {
+        width: 60%;
+    }
+}
+
+/* All the .btn */
+.btn {
+    display: inline-block;
+    text-align: center;
+    padding: 0;
+    text-decoration: none;
+}
+
+@keyframes boxShadowAnimation {
+    from {
+        box-shadow: 0 0 0;
+    } to {
+        box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    }
+}
+
+@keyframes comesFromAbove {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: .3s;
+    } to {
+        opacity: 1;
+        transform: translateY(0);
+        transition: .3s;
+    }
+}
+
+@keyframes comesFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+        transition: .3s;
+    } to {
+        opacity: 1;
+        transform: translateY(0);
+        transition: .3s;
+    }
+}
+
+@keyframes btnPulledForward {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+        transition: .3s;
+    } to {
+        opacity: 1;
+        transform: translateY(0);
+        transition: .3s;
+    }
+}

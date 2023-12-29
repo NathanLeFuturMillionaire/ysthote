@@ -45,7 +45,7 @@ class Enroll
                             // Destinataires
                             $mail->setFrom('misterntkofficiel2.0@gmail.com', 'Ysthote');
                             $mail->addAddress($email);
-                            $mail->addReplyTo($email);
+                            $mail->addReplyTo('misterntkofficiel2.0@gmail.com');
                             $mail->addCC($email);
                             $mail->addBCC($email);
 

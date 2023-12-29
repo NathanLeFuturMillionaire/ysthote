@@ -2,7 +2,7 @@
 
 session_start();
 
- ?>
+?>
 <?php $title = 'Ysthote - Votre compte a été confirmé'; ?>
 
 <?php ob_start(); ?>
@@ -17,15 +17,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 ?>
     <main class="container">
         <header>
-            <i class="fa fa-check"></i>
+        <img src="pictures/icons/user-faces/user-follow-line.svg" alt="Icone de l'utilisateur" width="50">
             <h2>Compte confirmé</h2>
             <p>Bravo👏! Vous avez confirmé votre compte avec succès, vous pouvez maintenant vous connecter.</p>
         </header>
-        <section>
-            <form action="index.php?page=login" method="post">
-                <button type="submit" name="submit" class="btn btn-darken">Se connecter</button>
-            </form>
-        </section>
+        <a href="index.php?page=login" name="submit" class="btn btn-darken">Se connecter</button>
     </main>
 
     <!-- Include the footer page -->

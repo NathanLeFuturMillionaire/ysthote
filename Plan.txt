@@ -1,0 +1,18 @@
+Projet Igest:
+
+QU'EST-CE QUE IGEST ?
+Igest est une plateforme scolaire qui permet aux élèves de calculer leur moyenne plus
+facilement et sans comettre des erreurs de calcul. Elle est de type réseau social,
+ce qui permet notament aux élèves, enseignants et parents d'élèves de s'interconnecter
+entre eux.
+
+OBJECTIF:
+Rendre accessible le calcul de moyenne à tous, en utilisant des formules
+propre à ces calculs.
+
+PLAN:
+L'utilisateur arrive sur le site, il y'a une page d'accueil lui présentant 
+le titre et la description du site, il y aura un bouton "S'authentifier" juste en bas
+L'utilisateur aura la possibilité de créer un compte avec une addresse email, une fois l'addresse saisie,
+il recevra un code de confirmation à cette dernière.
+
