@@ -20,7 +20,13 @@ class EnrollRepository
 {
     public DatabaseConnection $connection;
 
-    // Add a new member
+    /**
+     * Create a new account
+     * 
+     * @param string $email The email address
+     * @param string $confirmationCoode The confirmation code
+     * @return bool Return a bool
+     */
     public function createAccount(string $email, string $confirmationCode): bool
     {
         $statement = $this->connection->getConnection()->prepare("INSERT INTO user_accounts(email, confirmation_code, enroll_date) VALUES(?, ?, NOW())");

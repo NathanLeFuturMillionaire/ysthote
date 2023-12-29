@@ -1,9 +1,9 @@
 <?php
 
-// Init a namespace
+// Initialise un espace de noms
 namespace Ysthote\Controllers\Auth;
 
-// Use namespace classes
+// Utilise les classes de l'espace de noms
 
 use Exception;
 use Ysthote\Libs\Database\DatabaseConnection;
@@ -21,33 +21,33 @@ class ConfirmAccount
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (isset($post['submit'])) {
-                // Check if the confirmation code field is properly filled
+                // Vérifie si le champ du code de confirmation est correctement rempli
                 if (isset($post['confirmationCode']) && !empty($post['confirmationCode'])) {
                     $confirmationCode = strip_tags($post['confirmationCode']);
                     if (strlen($confirmationCode) <= 7) {
-                        // Instance enroll repository classes
+                        // Instancie des classes de dépôt d'enregistrement
                         $confirmAccountCodeRepository = new ConfirmAccountCodeRespository();
                         $confirmAccountCodeRepository->connection = new DatabaseConnection();
-                        // Get the confirmation code stored in the database
+                        // Récupère le code de confirmation stocké dans la base de données
                         if(isset($_COOKIE['EMAIL'])) {
                             $getConfirmationCodeStoredInTheDatabase = $confirmAccountCodeRepository->getConfirmationCode($_COOKIE['EMAIL']);
-                            // Compare the true code to the one entered in the form
+                            // Compare le vrai code à celui saisi dans le formulaire
                             if ($getConfirmationCodeStoredInTheDatabase->confirmationCode === $confirmationCode) {
-                                // Now we can confirm the account
+                                // Maintenant, nous pouvons confirmer le compte
                                 if($confirmAccountCodeRepository->confirmAccount($_COOKIE['EMAIL'])) {
                                     header('Location: index.php?page=confirmed');
                                 } else {
-                                    throw new Exception('Impossible de confirmer votre compte, veuillez ré-essayer.');
+                                    throw new Exception('Impossible de confirmer votre compte, veuillez réessayer.');
                                 }
                             } else {
-                                echo 'Code de confirmation incorrecte.';
+                                echo 'Code de confirmation incorrect.';
                             }
 
                         } else {
-                            throw new Exception('Impossible de récupérer le code de confirmation car vous avez surrément supprimé le cookie qui le detenait.');
+                            throw new Exception('Impossible de récupérer le code de confirmation car vous avez probablement supprimé le cookie qui le contenait.');
                         }
                     } else {
-                        echo 'Code de confirmation incorrecte.';
+                        echo 'Code de confirmation incorrect.';
                     }
                 } else {
                     echo 'Veuillez saisir votre code de confirmation.';
