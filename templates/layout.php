@@ -31,8 +31,13 @@
             case 'confirmed':
                 echo '<link rel="stylesheet" href="templates/css/auth/accountConfirmed.css">';
             break;
+
             case 'enterConfirmationCode':
                 echo '<link rel="stylesheet" href="templates/css/auth/enterConfirmationCode.css">';
+            break;
+            
+            case 'login':
+                echo '<link rel="stylesheet" href="templates/css/auth/login.css">';
             break;
         }
     } else {

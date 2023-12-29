@@ -86,14 +86,11 @@ main.container header h2 {
 
 main.container header p {
     animation: 1s comesFromBottom forwards;
+    margin-top: 10px;
 }
 
-main.container section a {
+main.container a.btn.btn-darken {
     animation: 1s btnPulledForward forwards;
-}
-
-main.container section {
-    margin-top: 20px;
 }
 
 main.container form {
@@ -101,33 +98,12 @@ main.container form {
     flex-direction: column;
 }
 
-main.container form .error-handler {
-    color: #c91010;
-}
-
-main.container form [type="text"] {
-    padding: 10px;
-    border: 1px solid #3b3b3b;
-    border-radius: 3px;
-    outline: none;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1em;
-    transition: .3s;
-}
-
-main.container form [type="text"]:focus {
-    outline: 1px solid #3b3b3b;
-}
-
-main.container form button {
+main.container .btn.btn-darken {
+    display: block;
     width: 200px;
     font-size: 1em;
+    margin: 4% auto;
     cursor: pointer;
-    margin: 3% auto;
-}
-
-
-main.container .btn.btn-darken {
     padding: 10px;
     background-color: #3b3b3b;
     border-radius: 3px;

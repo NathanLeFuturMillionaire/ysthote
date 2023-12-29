@@ -26,8 +26,13 @@ class Views
         require('templates/auth/confirmationCode.php');
     }
 
-    public function displaySuccessAccountConfirmedPage()
+    public function displaysSuccessAccountConfirmedPage()
     {
         require('templates/auth/accountConfirmed.php');
+    }
+
+    public function displaysLoginFormPage()
+    {
+        require('templates/auth/login.php');
     }
 }

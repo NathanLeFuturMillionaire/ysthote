@@ -22,7 +22,10 @@ try {
             $enterConfirmationCode->displaysTheConfirmationCodePage();
         } elseif($_GET['page'] === 'confirmed') {
             $accountConfirmedPage = new Views();
-            $accountConfirmedPage->displaySuccessAccountConfirmedPage();
+            $accountConfirmedPage->displaysSuccessAccountConfirmedPage();
+        } elseif($_GET['page'] === 'login') {
+            $loginPage = new Views();
+            $loginPage->displaysLoginFormPage();
         } else {
             throw new Exception('La page que vous avez demandée n\'existe pas.');
         }

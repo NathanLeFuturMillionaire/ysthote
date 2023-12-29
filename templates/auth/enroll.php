@@ -3,7 +3,7 @@
 use Ysthote\Controllers\Auth\Enroll;
 
 session_start(); ?>
-<?php $title = 'Ysthote - La plateforme scolaire de calcule de moyennes'; ?>
+<?php $title = 'Ysthote - Inscription'; ?>
 
 <?php
 
@@ -25,7 +25,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
         <header>
             <i class="fa fa-user"></i>
             <h2 class="text-left">Créer un compte Ysthote.</h2>
-            <p class="text-left">Il est préférable de le créer avec un parent.</p>
+            <p class="text-left">C'est facile, et ça ne vous prendra que 10s.</p>
         </header>
         <section>
             <form action="" method="post">
