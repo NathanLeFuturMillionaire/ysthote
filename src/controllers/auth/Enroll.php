@@ -1,9 +1,9 @@
 <?php
 
-// Init a namespace
+// Initialisation d'un espace de noms
 namespace Ysthote\Controllers\Auth;
 
-//Import PHPMailer, Uuids classes into the global namespace
+// Importe les classes PHPMailer, Uuids dans l'espace de noms global
 use Generator;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -12,13 +12,12 @@ use Ysthote\Libs\Database\DatabaseConnection;
 use Ysthote\Models\Auth\ConfirmAccountCodeRespository;
 use Ysthote\Models\EnrollRepository;
 
-//Load Composer's autoloader
+// Charge l'autoload de Composer
 // require 'vendor/autoload.php';
 
 require_once('src/libs/database.php');
 require_once('src/models/auth/Enroll.php');
 require_once('src/models/auth/ConfirmAccount.php');
-
 
 class Enroll
 {
@@ -27,13 +26,13 @@ class Enroll
         $post = $input;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (isset($post['submit'])) {
-                // check if the field has been filled
+                // Vérifie si le champ a été rempli
                 if (isset($post['email']) && !empty($post['email'])) {
                     $email = strip_tags($post['email']);
                     if (filter_var($post['email'], FILTER_VALIDATE_EMAIL)) {
                         try {
                             $mail = new PHPMailer(true);
-                            //Server settings
+                            // Paramètres du serveur
                             $mail->SMTPDebug = SMTP::DEBUG_SERVER;
                             $mail->isSMTP();
                             $mail->Host       = 'smtp.gmail.com';
@@ -43,14 +42,14 @@ class Enroll
                             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
                             $mail->Port       = 465;
 
-                            //Recipients
+                            // Destinataires
                             $mail->setFrom('misterntkofficiel2.0@gmail.com', 'Ysthote');
                             $mail->addAddress($email);
                             $mail->addReplyTo($email);
                             $mail->addCC($email);
                             $mail->addBCC($email);
 
-                            // Create a random code
+                            // Crée un code aléatoire
                             $confirmationCode = mt_rand(1000000, 9999999);
                             $enrollRepository = new EnrollRepository();
                             $enrollRepository->connection = new DatabaseConnection();
@@ -58,22 +57,22 @@ class Enroll
                             $confirmAccountCodeRepository = new ConfirmAccountCodeRespository();
                             $confirmAccountCodeRepository->connection = new DatabaseConnection();
 
-                            // Checks if the account already exists
+                            // Vérifie si le compte existe déjà
                             if ($enrollRepository->checksIfUserAlreadyExists($email) == 1) {
                                 echo 'Ce compte utilisateur est déjà utilisé.';
                             } else {
 
-                                // Create the account
+                                // Crée le compte
                                 $enrollRepository->createAccount($email, $confirmationCode);
 
-                                // Get the confirmation code
+                                // Obtient le code de confirmation
                                 $getConfirmationCode = $confirmAccountCodeRepository->getConfirmationCode($email);
-                                // Content
+                                // Contenu
                                 $mail->isHTML(true);
                                 $mail->Subject = 'Code de confirmation Ysthote';
-                                $mail->Body = 'Hello ! Votre code de confirmation à 7 chiffres est le ' . $getConfirmationCode->confirmationCode . '.';
+                                $mail->Body = 'Bonjour ! Votre code de confirmation à 7 chiffres est le ' . $getConfirmationCode->confirmationCode . '.';
                                 if ($mail->send()) {
-                                    // Create a cookie
+                                    // Crée un cookie
                                     setcookie(
                                         'EMAIL',
                                         $email,
@@ -83,7 +82,7 @@ class Enroll
                                             'httponly' => true,
                                         ],
                                     );
-                                    // Now redirect to the confirmation page
+                                    // Redirection vers la page de confirmation
                                     header('Location: index.php?page=enterConfirmationCode');
                                 }
                             }
@@ -91,10 +90,10 @@ class Enroll
                             echo 'Impossible d\'envoyer le message : ' . $mail->ErrorInfo;
                         }
                     } else {
-                        echo sprintf('L\'addresse email <strong>%s</strong> n\'est pas valide.', $email);
+                        echo sprintf('L\'adresse email <strong>%s</strong> n\'est pas valide.', $email);
                     }
                 } else {
-                    echo 'Veuillez remplir le champs.';
+                    echo 'Veuillez remplir le champ.';
                 }
             }
         }
