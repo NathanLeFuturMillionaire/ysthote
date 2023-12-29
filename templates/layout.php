@@ -39,6 +39,10 @@
             case 'login':
                 echo '<link rel="stylesheet" href="templates/css/auth/login.css">';
             break;
+
+            case 'createPassword':
+                echo '<link rel="stylesheet" href="templates/css/create/password.css">';
+            break;
         }
     } else {
         echo '<link rel="stylesheet" href="templates/css/home/home.css">';

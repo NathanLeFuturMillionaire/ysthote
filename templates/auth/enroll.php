@@ -23,17 +23,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 ?>
     <main class="container">
         <header>
-            <i class="fa fa-user"></i>
+            <img src="pictures/icons/user-faces/user-3-fill.svg" alt="Icone de l'utilisateur" width="50">
             <h2 class="text-left">Créer un compte Ysthote.</h2>
             <p class="text-left">C'est facile, et ça ne vous prendra que 10s.</p>
         </header>
         <section>
             <form action="" method="post">
                 <div class="error-handler">
-                <?php
-                $enroll = new Enroll();
-                $enroll->processesRegistrationFormData($_POST);
-                ?>
+                    <?php
+                    $enroll = new Enroll();
+                    $enroll->processesRegistrationFormData($_POST);
+                    ?>
                 </div>
                 <label for="email" class="text-left">Addresse email:*</label>
                 <input type="text" name="email" id="email" placeholder="Entrez votre addresse email">

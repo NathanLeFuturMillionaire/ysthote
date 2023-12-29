@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Ceci est le premier fichier à appeller
+ * Le site a commencé le 26 Décembre 2023 dans un salon à Nzeng-Ayong
+ */
+
 // Includes all the controllers files
 
 use Ysthote\Controllers\Viewing\Views;
@@ -26,6 +31,14 @@ try {
         } elseif($_GET['page'] === 'login') {
             $loginPage = new Views();
             $loginPage->displaysLoginFormPage();
+        } elseif($_GET['page'] === 'createPassword') {
+            // Vérifie si le cookie existe
+            if(isset($_COOKIE['ID']) && !empty($_COOKIE['ID'])) {
+                $createPasswordPage = new Views();
+                $createPasswordPage->displaysCreatePasswordPage();
+            } else {
+                throw new Exception('Une erreur est survenue car il manque une information que vous avez peut-être supprimée.');
+            }
         } else {
             throw new Exception('La page que vous avez demandée n\'existe pas.');
         }

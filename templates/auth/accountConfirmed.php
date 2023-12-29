@@ -21,7 +21,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
             <h2>Compte confirmé</h2>
             <p>Bravo👏! Vous avez confirmé votre compte avec succès, vous pouvez maintenant vous connecter.</p>
         </header>
-        <a href="index.php?page=login" name="submit" class="btn btn-darken">Se connecter</button>
+        <a href="index.php?page=login" name="submit" class="btn btn-darken">Se connecter</a>
     </main>
 
     <!-- Include the footer page -->

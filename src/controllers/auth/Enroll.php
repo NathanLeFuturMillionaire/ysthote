@@ -11,6 +11,7 @@ use PHPMailer\PHPMailer\Exception;
 use Ysthote\Libs\Database\DatabaseConnection;
 use Ysthote\Models\Auth\ConfirmAccountCodeRespository;
 use Ysthote\Models\EnrollRepository;
+use Ysthote\Models\Create\CreatePasswordRepository;
 
 // Charge l'autoload de Composer
 // require 'vendor/autoload.php';
@@ -18,6 +19,7 @@ use Ysthote\Models\EnrollRepository;
 require_once('src/libs/database.php');
 require_once('src/models/auth/Enroll.php');
 require_once('src/models/auth/ConfirmAccount.php');
+require_once('src/models/create/Password.php');
 
 class Enroll
 {
@@ -57,6 +59,9 @@ class Enroll
                             $confirmAccountCodeRepository = new ConfirmAccountCodeRespository();
                             $confirmAccountCodeRepository->connection = new DatabaseConnection();
 
+                            $getUserId = new CreatePasswordRepository();
+                            $getUserId->connection = new DatabaseConnection();
+
                             // Vérifie si le compte existe déjà
                             if ($enrollRepository->checksIfUserAlreadyExists($email) == 1) {
                                 echo 'Ce compte utilisateur est déjà utilisé.';
@@ -64,7 +69,6 @@ class Enroll
 
                                 // Crée le compte
                                 $enrollRepository->createAccount($email, $confirmationCode);
-
                                 // Obtient le code de confirmation
                                 $getConfirmationCode = $confirmAccountCodeRepository->getConfirmationCode($email);
                                 // Contenu

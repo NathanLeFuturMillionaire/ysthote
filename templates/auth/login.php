@@ -16,7 +16,7 @@ require_once('src/controllers/auth/Login.php');
 
 <?php
 // Check if there's a session opened
-if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
+if (isset($_SESSION['ID']) || isset($_SESSION['EMAIL'])) {
     // Redirect to the session home page
 } else {
     // Include the header file
@@ -26,14 +26,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
         <header>
             <!-- <i class="fa fa-user"></i> -->
             <img src="pictures/icons/user-faces/user-3-fill.svg" alt="Icone de l'utilisateur" width="50">
-            <h2 class="text-left">Se connecter</h2>
-            <p class="text-left">Connectez-vous à votre compte</p>
+            <h2>Se connecter</h2>
+            <p>Connectez-vous à votre compte</p>
         </header>
         <section>
             <form action="" method="post">
                 <div class="error-handler">
                 <?php
                 $login = new TakesCareofConnectionData();
+                $login->ValidateLoginForm($_POST);
                 ?>
                 </div>
                 <label for="email" class="text-left">Addresse email:*</label>

@@ -18,11 +18,11 @@ header.included-header {
     flex-wrap: wrap;
     align-items: center;
     padding: 5px;
-    width: 50%;
-    background: #f7f7f7;
+    width: 100%;
+    background: #ffffff;
     transition: .3s;
     margin: auto;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
 
@@ -59,14 +59,14 @@ header.included-header .logo {
 }
 
 main.container {
-    width: 40%;
+    width: 60%;
     height: auto;
     margin: 5% auto;
     padding: 10px;
     border-radius: 10px;
     background: #fff;
     position: relative;
-    animation: .6s boxShadowAnimation forwards
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
 }
 
 main.container header {
@@ -76,10 +76,12 @@ main.container header {
 main.container header h2 {
     animation: 1s comesFromAbove forwards;
     user-select: none;
+    font-size: 2.9em;
 }
 
 main.container header p {
     animation: 1s comesFromBottom forwards;
+    font-size: 1em;
 }
 
 main.container section a {

@@ -35,4 +35,9 @@ class Views
     {
         require('templates/auth/login.php');
     }
+
+    public function displaysCreatePasswordPage()
+    {
+        require('templates/create/password.php');
+    }
 }

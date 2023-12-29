@@ -18,11 +18,12 @@ header.included-header {
     flex-wrap: wrap;
     align-items: center;
     padding: 5px;
-    width: 50%;
-    background: #f7f7f7;
+    width: 100%;
+    background: #ffffff;
     transition: .3s;
     margin: auto;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px; */
 }
 
 
@@ -66,7 +67,7 @@ main.container {
     border-radius: 10px;
     background: #fff;
     position: relative;
-    animation: .6s boxShadowAnimation forwards
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
 }
 
 main.container header {
@@ -196,7 +197,7 @@ footer.footer {
 /* On normal tablet screen */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
     header.included-header {
-        width: 50%;
+        width: 100%;
     }
     
     main.container {
