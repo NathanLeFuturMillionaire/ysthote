@@ -11,7 +11,7 @@ class Login
 {
     public string $email;
     public string $userId;
-    public null $password;
+    public string $password;
     public string $isConfirmed;
 }
 
