@@ -12,6 +12,7 @@ use Ysthote\Controllers\Auth\ConfirmAccount;
 
 require_once('src/controllers/auth/Enroll.php');
 require_once('src/controllers/auth/ConfirmAccount.php');
+// Comment here!
 
 ?>
 
