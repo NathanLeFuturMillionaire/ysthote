@@ -121,9 +121,10 @@ main.container form [type="text"]:focus {
 
 main.container form button {
     width: 170px;
-    font-size: 1em;
+    font-size: 0.99em;
     cursor: pointer;
     margin: 3% auto;
+    font-family: 'Poppins', sans-serif;
 }
 
 main.container form .have-an-account {

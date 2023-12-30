@@ -15,7 +15,7 @@ require_once('src/controllers/auth/Enroll.php');
 
 <?php
 // Check if there's a session opened
-if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
+if (isset($_SESSION['ID']) || isset($_SESSION['EMAIL'])) {
     // Redirect to the session home page
 } else {
     // Include the header file

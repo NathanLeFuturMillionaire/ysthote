@@ -28,5 +28,15 @@ class CreatePasswordRepository
         ]);
     }
 
-    // public function RecoverUserPassword()
+    public function ChecksIfTheConcernedUserHasAlreadySetTheirPassword(int $idUser): Password
+    {
+        $statement = $this->connection->getConnection()->prepare("SELECT pass FROM profil WHERE id_user = :idUser");
+        $statement->execute([
+            'idUser' => $idUser,
+        ]);
+        $row = $statement->fetch();
+        $password = new Password();
+        $password->password = $row['pass'];
+        return $password;
+    }
 }

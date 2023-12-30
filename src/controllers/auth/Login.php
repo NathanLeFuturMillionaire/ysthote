@@ -47,7 +47,7 @@ class TakesCareofConnectionData
                                  * plus loin
                                  */
                                 $getPassword = $loginRepository->GetPasswordColumn($getUserId->userId);
-                                if($getPassword->password != null) {
+                                if($getPassword->password != '') {
                                     
                                 } else {
                                     /**

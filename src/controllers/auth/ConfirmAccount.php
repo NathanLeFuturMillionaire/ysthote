@@ -29,7 +29,7 @@ class ConfirmAccount
                         $confirmAccountCodeRepository = new ConfirmAccountCodeRespository();
                         $confirmAccountCodeRepository->connection = new DatabaseConnection();
                         // Récupère le code de confirmation stocké dans la base de données
-                        if(isset($_COOKIE['EMAIL'])) {
+                        if(isset($_COOKIE['EMAIL']) || isset($_COOKIE['ID'])) {
                             $getConfirmationCodeStoredInTheDatabase = $confirmAccountCodeRepository->getConfirmationCode($_COOKIE['EMAIL']);
                             // Compare le vrai code à celui saisi dans le formulaire
                             if ($getConfirmationCodeStoredInTheDatabase->confirmationCode === $confirmationCode) {
