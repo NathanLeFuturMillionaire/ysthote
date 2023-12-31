@@ -29,7 +29,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
     <main class="container">
         <header>
             <img src="pictures/icons/user-faces/user-3-line.svg" alt="Icone de l'utilisateur" width="50">
-            <h2>Confirmez votre compte</h2>
+            <h2>
+                <?php if(isset($_GET['motif']) && $_GET['motif'] != ''): ?>
+                    Votre compte semble être non confirmé
+                <?php else: ?>
+                    Confirmez votre compte
+                <?php endif; ?>
+            </h2>
             <?php if (isset($_COOKIE['EMAIL'])) : ?>
                 <p>
                     Entrez le code envoyé à l'addresse <strong><?= strip_tags($_COOKIE['EMAIL']); ?></strong>.

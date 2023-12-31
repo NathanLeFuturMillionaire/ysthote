@@ -20,16 +20,17 @@ use Ysthote\Models\Create\CreatePasswordRepository;
 // Check if there's a session opened
 if (isset($_SESSION['ID']) || isset($_SESSION['EMAIL'])) {
     // Redirect to the session home page
-    header('index.php?page=profil');
+    header('Location: index.php?page=profil');
 } else {
     // Vérifie d'abord si l'utilisateur concerné a déjà défini son mot de passe
     $passwordRepository = new CreatePasswordRepository();
     $passwordRepository->connection = new DatabaseConnection();
     $isPasswordAlreadySet = $passwordRepository->ChecksIfTheConcernedUserHasAlreadySetTheirPassword($_COOKIE['ID']);
     // Si il a déjà défini son mot de passe
-    if ($isPasswordAlreadySet->password != false) {
+    if ($isPasswordAlreadySet->password != 'no') {
         // Afficher la page de connexion
-        header('Location: index.php?page=login');
+        // header('Location: index.php?page=login');
+        echo 'Hello world!';
     } else {
         // Include the header file
         require('templates/includes/header.php');
