@@ -40,4 +40,14 @@ class Views
     {
         require('templates/create/password.php');
     }
+
+    public function displaysWelcomePage()
+    {
+        require('templates/welcome/welcome.php');
+    }
+
+    public function displaysPhotoPage()
+    {
+        require('templates/welcome/photo.php');
+    }
 }

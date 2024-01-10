@@ -45,7 +45,7 @@ class SetUsernameAndPassword
                                         // Et on ouvre une session
                                         session_start();
                                         $_SESSION['ID'] = $_COOKIE['ID'];
-                                        header('Location: index.php?page=welcome&id=' . $_SESSION['ID']);
+                                        header('Location: index.php?page=welcome');
                                     }
                                 } else {
                                     echo 'Vos mots de passes ne correspondent pas.';

@@ -29,8 +29,8 @@ if (isset($_SESSION['ID']) || isset($_SESSION['EMAIL'])) {
     // Si il a déjà défini son mot de passe
     if ($isPasswordAlreadySet->password != 'no') {
         // Afficher la page de connexion
-        // header('Location: index.php?page=login');
-        echo 'Hello world!';
+        header('Location: index.php?page=login');
+        // echo 'Hello world!';
     } else {
         // Include the header file
         require('templates/includes/header.php');

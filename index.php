@@ -8,8 +8,10 @@
 // Includes all the controllers files
 
 use Ysthote\Controllers\Viewing\Views;
+use Ysthote\Controllers\Welcome\Welcome;
 
 require_once('src/controllers/Views.php');
+require_once('src/controllers/welcome/Welcome.php');
 
 require('vendor/autoload.php');
 
@@ -38,6 +40,26 @@ try {
                 $createPasswordPage->displaysCreatePasswordPage();
             } else {
                 throw new Exception('Une erreur est survenue car il manque une information que vous avez peut-être supprimée.');
+            }
+        } elseif($_GET['page'] === 'welcome') {
+            session_start();
+            if(isset($_SESSION['ID'])) {
+                $displayWelcomePage = new Views();
+                $displayWelcomePage->displaysWelcomePage();
+            } else {
+                header('Location: index.php?page=login');
+            }
+        } elseif($_GET['page'] == 'updateJoiningAs') {
+            session_start();
+            if(isset($_SESSION['ID'])) {
+                $updateJoining = new Welcome;
+                $updateJoining->setJoiningAs($_POST);
+            }
+        } elseif($_GET['page'] == 'photo') {
+            session_start();
+            if(isset($_SESSION['ID'])) {
+                $displayPhotoPage = new Views;
+                $displayPhotoPage->displaysPhotoPage();
             }
         } else {
             throw new Exception('La page que vous avez demandée n\'existe pas.');

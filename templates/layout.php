@@ -43,6 +43,14 @@
             case 'createPassword':
                 echo '<link rel="stylesheet" href="templates/css/create/password.css">';
             break;
+
+            case 'welcome':
+                echo '<link rel="stylesheet" href="templates/css/welcome/welcome.css">';
+            break;
+
+            case 'photo':
+                echo '<link rel="stylesheet" href="templates/css/welcome/photo.css">';
+            break;
         }
     } else {
         echo '<link rel="stylesheet" href="templates/css/home/home.css">';

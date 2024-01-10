@@ -3,7 +3,7 @@
 // Initialise un namespace
 namespace Ysthote\Models\Create;
 
-require_once('src/libs/database.php');
+require_once 'src/libs/database.php';
 
 use Ysthote\Libs\Database\DatabaseConnection;
 
