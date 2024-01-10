@@ -6,7 +6,6 @@ namespace Ysthote\Controllers\Photo;
 // Utilise les classes venant d'autres fichiers
 use Ysthote\Models\Member\MemberRepository;
 use Ysthote\Libs\Database\DatabaseConnection;
-use Gumlet\ImageResize;
 
 class Photo
 {
@@ -22,8 +21,17 @@ class Photo
                         $extension = $fileInfo['extension'];
                         $allowedExtension = ['jpeg', 'jpg', 'png', 'gif'];
                         if(in_array($extension, $allowedExtension)) {
+                            // Stocke la photo dans un dossier
                             move_uploaded_file($file['profil-picture']['tmp_name'], 'templates/users/profil-picture/' . $_SESSION['ID'] . '.' . $extension);
-                            echo 'Importée';
+                            // Enregistre la photo dans la base de données
+                            $memberRepository = new MemberRepository;
+                            $memberRepository->connection = new DatabaseConnection;
+                            if($memberRepository->updateProfilPicture($_SESSION['ID'], $extension, $_SESSION['ID'])) {
+                                header('Location: index.php?page=profil');
+                            } else {
+                                echo 'Une erreur s\'est produite lors de l\'import de votre photo de profil.';
+                            }
+
                         } else {
                             echo 'Seuls les images .jpeg, .jpg, .png, .gif sont autorisées.';
                         }
