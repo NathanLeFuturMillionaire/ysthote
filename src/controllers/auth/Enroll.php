@@ -62,33 +62,35 @@ class Enroll
                             $getUserId = new CreatePasswordRepository();
                             $getUserId->connection = new DatabaseConnection();
 
+                            
                             // Vérifie si le compte existe déjà
                             if ($enrollRepository->checksIfUserAlreadyExists($email) == 1) {
                                 echo 'Ce compte utilisateur est déjà utilisé.';
                             } else {
-
-                                // Crée le compte
                                 $enrollRepository->createAccount($email, $confirmationCode);
+                                
                                 // Obtient le code de confirmation
                                 $getConfirmationCode = $confirmAccountCodeRepository->getConfirmationCode($email);
-                                // Contenu
+    
+                                // Le corps de l'email
                                 $mail->isHTML(true);
                                 $mail->Subject = 'Code de confirmation Ysthote';
-                                $mail->Body = 'Bonjour ! Votre code de confirmation à 7 chiffres est le ' . $getConfirmationCode->confirmationCode . '.';
-                                if ($mail->send()) {
-                                    // Crée un cookie
-                                    setcookie(
-                                        'EMAIL',
-                                        $email,
-                                        [
-                                            'expires' => time() + 365 * 24 * 3600,
-                                            'secure' => true,
-                                            'httponly' => true,
-                                        ],
-                                    );
-                                    // Redirection vers la page de confirmation
-                                    header('Location: index.php?page=enterConfirmationCode');
-                                }
+                                $mail->Body = 'Salut ! Votre code de confirmation à 7 chiffres est le ' . $getConfirmationCode->confirmationCode . '.';
+                                // On envoi le code de confirmation puis, on crée le compte
+                                $mail->send();
+                                    
+                                // Crée un cookie
+                                setcookie(
+                                    'EMAIL',
+                                    $email,
+                                    [
+                                        'expires' => time() + 365 * 24 * 3600,
+                                        'secure' => true,
+                                        'httponly' => true,
+                                    ],
+                                );
+                                // Redirection vers la page de confirmation
+                                header('Location: index.php?page=enterConfirmationCode');
                             }
                         } catch (Exception $e) {
                             echo 'Impossible d\'envoyer le message : ' . $mail->ErrorInfo;

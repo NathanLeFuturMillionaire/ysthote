@@ -8,6 +8,7 @@ use Ysthote\Libs\Database\DatabaseConnection;
 class ConfirmCode
 {
     public string $confirmationCode;
+    public string $isConfirmed;
 }
 
 class ConfirmAccountCodeRespository
@@ -27,6 +28,7 @@ class ConfirmAccountCodeRespository
         $row = $statement->fetch();
         $confirmationCode = new ConfirmCode();
         $confirmationCode->confirmationCode = $row['confirmation_code'];
+        $confirmationCode->isConfirmed = $row['is_confirmed'];
         return $confirmationCode;
     }
 
