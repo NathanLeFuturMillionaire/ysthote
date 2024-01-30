@@ -3,6 +3,9 @@
 // Init a namespace
 namespace Ysthote\Controllers\Viewing;
 
+use Ysthote\Models\Member\MemberRepository;
+use Ysthote\Libs\Database\DatabaseConnection;
+
 require_once('src/libs/database.php');
 
 
@@ -38,11 +41,13 @@ class Views
 
     public function displaysCreatePasswordPage()
     {
+
         require('templates/create/password.php');
     }
 
     public function displaysWelcomePage()
     {
+
         require('templates/welcome/welcome.php');
     }
 

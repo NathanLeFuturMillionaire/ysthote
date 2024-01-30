@@ -42,7 +42,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                 </p>
             <?php else : ?>
                 <p>Nous avons envoyé un code de confirmation à 7 chiffre à l'addresse email
-                    que vouss avez saisi lors de l'inscription, veuillez consultez votre boîte mail.
+                    que vous avez saisi lors de l'inscription, veuillez consultez votre boîte mail.
                 </p>
             <?php endif; ?>
         </header>

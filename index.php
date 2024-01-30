@@ -12,6 +12,7 @@ use Ysthote\Controllers\Welcome\Welcome;
 
 require_once('src/controllers/Views.php');
 require_once('src/controllers/welcome/Welcome.php');
+require_once('src/controllers/auth/Logout.php');
 
 require('vendor/autoload.php');
 
@@ -61,6 +62,11 @@ try {
                 $displayPhotoPage = new Views;
                 $displayPhotoPage->displaysPhotoPage();
             }
+        } elseif($_GET['page'] && $_GET['page'] == 'logout') {
+            if(isset($_SESSION['ID'])) {
+                $logout = new Logout;
+                $logout->logout();
+            }
         } else {
             throw new Exception('La page que vous avez demandée n\'existe pas.');
         }
@@ -71,5 +77,4 @@ try {
 } catch (Exception $e) {
     $errorMessage = $e->getMessage();
     require('templates/error.php');
-    //
 }

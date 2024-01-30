@@ -16,7 +16,7 @@ class DatabaseConnection
     public function getConnection(): \PDO
     {
         if($this->database === null) {
-            $this->database = new \PDO('mysql:host=localhost;dbname=ysthote;charset=utf8', 'root', '', [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION]);
+            $this->database = new \PDO('mysql:host=127.0.0.1;dbname=ysthote;charset=utf8', 'root', 'root', [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION]);
         }
 
         return $this->database;

@@ -14,6 +14,8 @@ class Member
     public string $username;
     public string $email;
     public string $idUser;
+    public string $joinAs;
+    public string $profilPicture;
 }
 
 class MemberRepository
@@ -31,7 +33,7 @@ class MemberRepository
 
     public function getMemberInformations(string $idUser): Member
     {
-        $statement = $this->connection->getConnection()->prepare('SELECT u.email email, p.username username, p.id_user idUser FROM user_accounts u INNER JOIN profil p ON u.id = p.id_user WHERE u.id = :idUser');
+        $statement = $this->connection->getConnection()->prepare('SELECT u.email email, p.username username, p.id_user idUser, p.joinAs joinAs, p.profilPicture profilPicture FROM user_accounts u INNER JOIN profil p ON u.id = p.id_user WHERE u.id = :idUser');
         $statement->execute([
             'idUser' => $idUser,
         ]);
@@ -40,6 +42,8 @@ class MemberRepository
         $member->email = $row['email'];
         $member->username = $row['username'];
         $member->idUser = $row['idUser'];
+        $member->joinAs = $row['joinAs'];
+        $member->profilPicture = $row['profilPicture'];
         return $member;
     }
 
