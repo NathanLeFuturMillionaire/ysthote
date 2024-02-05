@@ -35,13 +35,13 @@ class SetUsernameAndPassword
                                 // Vérifie que le premier mot de passe est bien égale au second
                                 if($password === $confirmPassword) {
                                     // Hash le mot de passe
-                                    $password_hash = password_hash($$password, PASSWORD_DEFAULT);
+                                    $password_hash = password_hash($password, PASSWORD_DEFAULT);
                                     // Update User Password
                                     $passwordRepository = new CreatePasswordRepository();
                                     $passwordRepository->connection = new DatabaseConnection();
                                     $updateUserInformation = $passwordRepository->UpdatesUserInformation($username, $password_hash, $_COOKIE['ID']);
                                     if($updateUserInformation) {
-                                        // Si le nom et le mot de passe a été défini, on rédirige vers ma page de bienvenue
+                                        // Si le nom et le mot de passe ont été définis, on rédirige vers la page de bienvenue
                                         // Et on ouvre une session
                                         session_start();
                                         $_SESSION['ID'] = $_COOKIE['ID'];

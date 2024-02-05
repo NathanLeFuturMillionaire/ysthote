@@ -2,6 +2,7 @@
 
 use Ysthote\Controllers\Auth\Enroll;
 
+
 session_start(); ?>
 <?php $title = 'Ysthote - Inscription'; ?>
 

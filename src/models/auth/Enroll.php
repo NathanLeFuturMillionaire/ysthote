@@ -6,6 +6,7 @@ namespace Ysthote\Models;
 require_once('src/libs/database.php');
 
 use Ysthote\Libs\Database\DatabaseConnection;
+use Ramsey\Uuid\Uuid;
 
 class Enroll
 {
@@ -27,10 +28,10 @@ class EnrollRepository
      * @param string $confirmationCoode The confirmation code
      * @return bool Return a bool
      */
-    public function createAccount(string $email, string $confirmationCode): bool
+    public function createAccount(string $id, string $email, string $confirmationCode): bool
     {
-        $statement = $this->connection->getConnection()->prepare("INSERT INTO user_accounts(email, confirmation_code, enroll_date) VALUES(?, ?, NOW())");
-        return $statement->execute([$email, $confirmationCode]);
+        $statement = $this->connection->getConnection()->prepare("INSERT INTO user_accounts(id, email, confirmation_code, enroll_date) VALUES(?, ?, ?, NOW())");
+        return $statement->execute([$id, $email, $confirmationCode]);
     }
 
     /**

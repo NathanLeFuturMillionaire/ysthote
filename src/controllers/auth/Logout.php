@@ -1,5 +1,8 @@
 <?php
 
+namespace Ysthote\Controllers\LoggingOut;
+
+
 class Logout
 {
     public function logout()

@@ -11,6 +11,7 @@ use PHPMailer\PHPMailer\Exception;
 use Ysthote\Libs\Database\DatabaseConnection;
 use Ysthote\Models\Auth\ConfirmAccountCodeRespository;
 use Ysthote\Models\Auth\LoginRepository;
+use Ramsey\Uuid\Uuid;
 
 // inclue le fichier du Login class
 require_once('src/models/auth/Login.php');
@@ -73,26 +74,26 @@ class TakesCareofConnectionData
                                             $mail->Password   = 'jlkvgxzhbvgvebls';
                                             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
                                             $mail->Port       = 465;
-    
+
                                             // Destinataires
                                             $mail->setFrom('misterntkofficiel2.0@gmail.com', 'Ysthote');
                                             $mail->addAddress($email);
                                             $mail->addReplyTo($email);
                                             $mail->addCC($email);
                                             $mail->addBCC($email);
-    
+
                                             $getConfirmationCode = $confirmAccountCodeRepository->getConfirmationCode($email);
                                             // Contenu
                                             $mail->isHTML(true);
                                             $mail->Subject = 'Code de confirmation Ysthote';
                                             $mail->Body = 'Bonjour ! Votre code de confirmation à 7 chiffres est le ' . $getConfirmationCode->confirmationCode . '.';
-    
+
                                             // Si le code a bien été envoyé avec succès
-                                            if($mail->send()) {
+                                            if ($mail->send()) {
                                                 // Rediriger vers la page de confirmation du code
                                                 header('Location: index.php?page=enterConfirmationCode&motif=unConfirmed');
                                             }
-                                        } catch(Exception $e) {
+                                        } catch (Exception $e) {
                                             echo 'Impossible d\'envoyer le message : ' . $mail->ErrorInfo;
                                         }
                                     }

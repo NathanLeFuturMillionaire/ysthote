@@ -9,6 +9,7 @@
 
 use Ysthote\Controllers\Viewing\Views;
 use Ysthote\Controllers\Welcome\Welcome;
+use Ysthote\Controllers\LoggingOut\Logout;
 
 require_once('src/controllers/Views.php');
 require_once('src/controllers/welcome/Welcome.php');
@@ -28,42 +29,49 @@ try {
         } elseif ($_GET['page'] === 'enterConfirmationCode') {
             $enterConfirmationCode = new Views();
             $enterConfirmationCode->displaysTheConfirmationCodePage();
-        } elseif($_GET['page'] === 'confirmed') {
+        } elseif ($_GET['page'] === 'confirmed') {
             $accountConfirmedPage = new Views();
             $accountConfirmedPage->displaysSuccessAccountConfirmedPage();
-        } elseif($_GET['page'] === 'login') {
+        } elseif ($_GET['page'] === 'login') {
             $loginPage = new Views();
             $loginPage->displaysLoginFormPage();
-        } elseif($_GET['page'] === 'createPassword') {
+        } elseif ($_GET['page'] === 'createPassword') {
             // Vérifie si le cookie existe
-            if(isset($_COOKIE['ID']) && !empty($_COOKIE['ID'])) {
+            if (isset($_COOKIE['ID']) && !empty($_COOKIE['ID'])) {
                 $createPasswordPage = new Views();
                 $createPasswordPage->displaysCreatePasswordPage();
             } else {
                 throw new Exception('Une erreur est survenue car il manque une information que vous avez peut-être supprimée.');
             }
-        } elseif($_GET['page'] === 'welcome') {
+        } elseif ($_GET['page'] === 'welcome') {
             session_start();
-            if(isset($_SESSION['ID'])) {
+            if (isset($_SESSION['ID'])) {
                 $displayWelcomePage = new Views();
                 $displayWelcomePage->displaysWelcomePage();
             } else {
                 header('Location: index.php?page=login');
             }
-        } elseif($_GET['page'] == 'updateJoiningAs') {
+        } elseif ($_GET['page'] == 'updateJoiningAs') {
             session_start();
-            if(isset($_SESSION['ID'])) {
+            if (isset($_SESSION['ID'])) {
                 $updateJoining = new Welcome;
                 $updateJoining->setJoiningAs($_POST);
             }
-        } elseif($_GET['page'] == 'photo') {
+        } elseif ($_GET['page'] == 'photo') {
             session_start();
-            if(isset($_SESSION['ID'])) {
+            if (isset($_SESSION['ID'])) {
                 $displayPhotoPage = new Views;
                 $displayPhotoPage->displaysPhotoPage();
             }
-        } elseif($_GET['page'] && $_GET['page'] == 'logout') {
+        } elseif($_GET['page'] == 'profil') {
+            session_start();
             if(isset($_SESSION['ID'])) {
+                $profilPage = new Views;
+                $profilPage->displayProfilPage();
+            }
+        } elseif ($_GET['page'] && $_GET['page'] == 'logout') {
+            session_start();
+            if (isset($_SESSION['ID'])) {
                 $logout = new Logout;
                 $logout->logout();
             }

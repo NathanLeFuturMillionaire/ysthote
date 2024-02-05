@@ -51,6 +51,10 @@
             case 'photo':
                 echo '<link rel="stylesheet" href="templates/css/welcome/photo.css">';
             break;
+
+            case 'profil':
+                echo '<link rel="stylesheet" href="templates/css/users/profil.css">';
+            break;
         }
     } else {
         echo '<link rel="stylesheet" href="templates/css/home/home.css">';

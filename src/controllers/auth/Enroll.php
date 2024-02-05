@@ -12,6 +12,7 @@ use Ysthote\Libs\Database\DatabaseConnection;
 use Ysthote\Models\Auth\ConfirmAccountCodeRespository;
 use Ysthote\Models\EnrollRepository;
 use Ysthote\Models\Create\CreatePasswordRepository;
+use Ramsey\Uuid\Uuid;
 
 // Charge l'autoload de Composer
 // require 'vendor/autoload.php';
@@ -67,7 +68,10 @@ class Enroll
                             if ($enrollRepository->checksIfUserAlreadyExists($email) == 1) {
                                 echo 'Ce compte utilisateur est déjà utilisé.';
                             } else {
-                                $enrollRepository->createAccount($email, $confirmationCode);
+                                // Create a unique user id
+                                $uniqueUserId = Uuid::uuid4();
+                                // Crée le compte
+                                $enrollRepository->createAccount($uniqueUserId, $email, $confirmationCode);
                                 
                                 // Obtient le code de confirmation
                                 $getConfirmationCode = $confirmAccountCodeRepository->getConfirmationCode($email);

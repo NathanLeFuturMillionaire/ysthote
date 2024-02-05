@@ -28,7 +28,7 @@ class CreatePasswordRepository
         ]);
     }
 
-    public function ChecksIfTheConcernedUserHasAlreadySetTheirPassword(int $idUser): Password
+    public function ChecksIfTheConcernedUserHasAlreadySetTheirPassword(string $idUser): Password
     {
         $statement = $this->connection->getConnection()->prepare("SELECT pass FROM profil WHERE id_user = :idUser");
         $statement->execute([

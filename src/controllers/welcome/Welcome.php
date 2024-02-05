@@ -4,7 +4,6 @@
 namespace Ysthote\Controllers\Welcome;
 
 // Utilise les classes venant d'autres fichiers
-
 use Exception;
 use Ysthote\Models\Member\MemberRepository;
 use Ysthote\Libs\Database\DatabaseConnection;

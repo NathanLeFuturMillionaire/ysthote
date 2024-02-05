@@ -54,7 +54,7 @@ class MemberRepository
      * 
      * @return bool Retourn un booléen
      */
-    public function theMemberJoinAs(string $choice, int $idUser): bool
+    public function theMemberJoinAs(string $choice, string $idUser): bool
     {
         $statement = $this->connection->getConnection()->prepare("UPDATE profil SET joinAs = :joinAs WHERE id_user = :idUser");
         return $statement->execute([
@@ -67,11 +67,12 @@ class MemberRepository
      * Mets à jour la photo de profil du membre
      * 
      * @param string profilPicture La photo de profil qui sera ajoutée
-     * @param int $idUser L'id du membre qui est sur le point de mettre à jour sa photo
+     * @param string $idUser L'id du membre qui est sur le point de mettre à jour sa photo
+     * @param string $extension l'entension de la photo qui doit être uploadée
      * 
      * @return bool Retourne un booléen 
      */
-    public function updateProfilPicture(string $profilPicture, string $extension, int $idUser): bool
+    public function updateProfilPicture(string $profilPicture, string $extension, string $idUser): bool
     {
         $statement = $this->connection->getConnection()->prepare("UPDATE profil SET profilPicture = :profilPicture WHERE id_user = :idUser");
         return $statement->execute([

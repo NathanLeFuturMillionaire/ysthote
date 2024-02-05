@@ -41,18 +41,21 @@ class Views
 
     public function displaysCreatePasswordPage()
     {
-
         require('templates/create/password.php');
     }
 
     public function displaysWelcomePage()
     {
-
         require('templates/welcome/welcome.php');
     }
 
     public function displaysPhotoPage()
     {
         require('templates/welcome/photo.php');
+    }
+
+    public function displayProfilPage()
+    {
+        require('templates/users/profil.php');
     }
 }
