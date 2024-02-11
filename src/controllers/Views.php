@@ -3,12 +3,6 @@
 // Init a namespace
 namespace Ysthote\Controllers\Viewing;
 
-use Ysthote\Models\Member\MemberRepository;
-use Ysthote\Libs\Database\DatabaseConnection;
-
-require_once('src/libs/database.php');
-
-
 /**
  * Shows all the views pages
  */
