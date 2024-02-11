@@ -4,8 +4,11 @@
 namespace Ysthote\Controllers\Photo;
 
 // Utilise les classes venant d'autres fichiers
-use Ysthote\Models\Member\MemberRepository;
+use Ysthote\Models\MemberRepository;
 use Ysthote\Libs\Database\DatabaseConnection;
+
+require_once('src/models/member/Member.php');
+
 
 class Photo
 {
