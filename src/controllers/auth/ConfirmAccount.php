@@ -4,7 +4,6 @@
 namespace Ysthote\Controllers\Auth;
 
 // Utilise les classes de l'espace de noms
-
 use Exception;
 use Ysthote\Libs\Database\DatabaseConnection;
 use Ysthote\Models\Auth\ConfirmAccountCode;
