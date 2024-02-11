@@ -19,13 +19,14 @@ class ConfirmAccountCodeRespository
      * 
      * @param string $email the email that will grant us to take the code
      * 
-     * @return Enroll
+     * @return ConfirmCode
      */
     public function getConfirmationCode(string $email): ConfirmCode
     {
         $statement = $this->connection->getConnection()->prepare("SELECT * FROM user_accounts WHERE email = ?");
         $statement->execute([$email]);
         $row = $statement->fetch();
+        
         $confirmationCode = new ConfirmCode();
         $confirmationCode->confirmationCode = $row['confirmation_code'];
         $confirmationCode->isConfirmed = $row['is_confirmed'];
