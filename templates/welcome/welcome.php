@@ -4,7 +4,7 @@
 ob_start();
 
 use Ysthote\Libs\Database\DatabaseConnection;
-use Ysthote\Models\Member\MemberRepository;
+use Ysthote\Models\MemberRepository;
 
 require_once 'src/libs/database.php';
 require_once 'src/models/member/Member.php';
