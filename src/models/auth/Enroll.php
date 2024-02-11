@@ -6,7 +6,6 @@ namespace Ysthote\Models;
 require_once('src/libs/database.php');
 
 use Ysthote\Libs\Database\DatabaseConnection;
-use Ramsey\Uuid\Uuid;
 
 class Enroll
 {
@@ -25,7 +24,7 @@ class EnrollRepository
      * Create a new account
      * 
      * @param string $email The email address
-     * @param string $confirmationCoode The confirmation code
+     * @param string $confirmationCode The confirmation code
      * @return bool Return a bool
      */
     public function createAccount(string $id, string $email, string $confirmationCode): bool
