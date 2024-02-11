@@ -3,7 +3,7 @@
 <?php ob_start();
 
 use Ysthote\Libs\Database\DatabaseConnection;
-use Ysthote\Models\Member\MemberRepository;
+use Ysthote\Models\MemberRepository;
 use Ysthote\Controllers\Photo\Photo;
 
 require_once 'src/libs/database.php';
