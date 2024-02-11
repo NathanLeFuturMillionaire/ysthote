@@ -5,7 +5,7 @@ namespace Ysthote\Controllers\Welcome;
 
 // Utilise les classes venant d'autres fichiers
 use Exception;
-use Ysthote\Models\Member\MemberRepository;
+use Ysthote\Models\MemberRepository;
 use Ysthote\Libs\Database\DatabaseConnection;
 
 // Inclue le fichier de chaque namespace, afin de prendre en compte les classes
