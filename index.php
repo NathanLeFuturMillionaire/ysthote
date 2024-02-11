@@ -62,6 +62,8 @@ try {
             if (isset($_SESSION['ID'])) {
                 $displayPhotoPage = new Views;
                 $displayPhotoPage->displaysPhotoPage();
+            } else {
+                header('Location: index.php?page=login');
             }
         } elseif($_GET['page'] == 'profil') {
             session_start();
