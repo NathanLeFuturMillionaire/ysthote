@@ -41,7 +41,7 @@ class Enroll
                             $mail->Host       = 'smtp.gmail.com';
                             $mail->SMTPAuth   = true;
                             $mail->Username   = 'misterntkofficiel2.0@gmail.com';
-                            $mail->Password   = 'jlkvgxzhbvgvebls';
+                            $mail->Password   = 'igrsepxlojvhgeup';
                             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
                             $mail->Port       = 465;
 
@@ -63,7 +63,7 @@ class Enroll
                             $getUserId = new CreatePasswordRepository();
                             $getUserId->connection = new DatabaseConnection();
 
-                            
+
                             // Vérifie si le compte existe déjà
                             if ($enrollRepository->checksIfUserAlreadyExists($email) == 1) {
                                 echo 'Ce compte utilisateur est déjà utilisé.';
@@ -72,17 +72,17 @@ class Enroll
                                 $uniqueUserId = Uuid::uuid4();
                                 // Crée le compte
                                 $enrollRepository->createAccount($uniqueUserId, $email, $confirmationCode);
-                                
+
                                 // Obtient le code de confirmation
                                 $getConfirmationCode = $confirmAccountCodeRepository->getConfirmationCode($email);
-    
+
                                 // Le corps de l'email
                                 $mail->isHTML(true);
                                 $mail->Subject = 'Code de confirmation Ysthote';
                                 $mail->Body = 'Salut ! Votre code de confirmation à 7 chiffres est le ' . $getConfirmationCode->confirmationCode . '.';
                                 // On envoi le code de confirmation puis, on crée le compte
                                 $mail->send();
-                                    
+
                                 // Crée un cookie
                                 setcookie(
                                     'EMAIL',
