@@ -1,13 +1,12 @@
 <?php
 
 // Initialise un namespace
-namespace Ysthote\Models\Member;
+namespace Ysthote\Models;
 
 // Récupère le fichier qui contient notre class database
 require_once('src/libs/database.php');
 
 use Ysthote\Libs\Database\DatabaseConnection;
-
 
 class Member
 {
@@ -16,6 +15,8 @@ class Member
     public string $idUser;
     public string $joinAs;
     public string $profilPicture;
+    public string $isSuspended;
+    public string $isConfirmed;
 }
 
 class MemberRepository
@@ -33,7 +34,7 @@ class MemberRepository
 
     public function getMemberInformations(string $idUser): Member
     {
-        $statement = $this->connection->getConnection()->prepare('SELECT u.email email, p.username username, p.id_user idUser, p.joinAs joinAs, p.profilPicture profilPicture FROM user_accounts u INNER JOIN profil p ON u.id = p.id_user WHERE u.id = :idUser');
+        $statement = $this->connection->getConnection()->prepare('SELECT u.email email, p.username username, u.is_suspended isSuspended, u.is_confirmed isConfirmed, p.id_user idUser, p.joinAs joinAs, p.profilPicture profilPicture FROM user_accounts u INNER JOIN profil p ON u.id = p.id_user WHERE u.id = :idUser');
         $statement->execute([
             'idUser' => $idUser,
         ]);
@@ -44,6 +45,8 @@ class MemberRepository
         $member->idUser = $row['idUser'];
         $member->joinAs = $row['joinAs'];
         $member->profilPicture = $row['profilPicture'];
+        $member->isSuspended = $row['isSuspended'];
+        $member->isConfirmed = $row['isConfirmed'];
         return $member;
     }
 
@@ -79,5 +82,15 @@ class MemberRepository
             'profilPicture' => $profilPicture . '.' . $extension,
             'idUser' => $idUser,
         ]);
+    }
+
+    /**
+     * Demande à MySQL si l'utilisateur existe
+     */
+    public function IsUserExist(string $idUser) : int
+    {
+        $statement = $this->connection->getConnection()->prepare("SELECT id FROM user_accounts WHERE id = ?");
+        $statement->execute([$idUser]);
+        return $statement->rowCount();
     }
 }
