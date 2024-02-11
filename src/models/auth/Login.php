@@ -19,9 +19,9 @@ class LoginRepository
 {
     public DatabaseConnection $connection;
     /**
-     * Vérifie si l'addresse email entrée existe
-     * @param string $email L'adresse email a vérifier
-     * @return int Retourne un nombre, 1 si l'addresse existe
+     * Check if the email address entered does exist
+     * @param string $email The email address to check
+     * @return int Return a number, 1 if the email address does exist
      */
     public function ChecksIfEmailAddressEntryExists(string $email): int
     {
