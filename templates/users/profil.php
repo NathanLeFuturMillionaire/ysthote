@@ -31,7 +31,7 @@ if ($memberRepository->IsUserExist($id_user) == 1) {
                 ?>
                 <header>
                     <div class="user-photo-and-username">
-                        <div class="photo">
+                        <div class="photo" id="test">
                             <?php if($member->profilPicture != 'no'): ?>
                                 <img src="templates/users/profil-picture/<?= $member->profilPicture; ?>" alt="Photo de profil de l'utilisateur" width="80" height="80">
                             <?php else: ?>
